@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Videomaker Estratégico RJ | Vídeos para Dentistas e Advogados</title>
+  <meta name="description" content="Produzo vídeos estratégicos para clínicas odontológicas e escritórios de advocacia no Rio de Janeiro. Em 1 dia de filmagem, sua presença digital passa a atrair pacientes e clientes de maior valor." />
+
+  <!-- ============================================================
+       META PIXEL — substitua XXXXXXXXXXXXXXXXXX pelo seu Pixel ID
+       ============================================================ -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', 'XXXXXXXXXXXXXXXXXX'); // ← SEU PIXEL ID AQUI
+    fbq('track', 'PageView');          // EVENTO 1 — PageView automático
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- ============================================================ -->
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --preto:    #0A0A0A;
+      --branco:   #FFFFFF;
+      --cinza-f:  #F5F5F5;
+      --cinza-m:  #888888;
+      --dourado:  #C9A84C;
+      --verde-w:  #25D366;
+      --verde-w2: #1EBE5A;
+      --font:     'Segoe UI', system-ui, -apple-system, sans-serif;
+      --max:      860px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--preto); color: var(--branco); font-family: var(--font); font-size: 17px; line-height: 1.65; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITÁRIOS ─── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block; background: rgba(201,168,76,0.15);
+      border: 1px solid var(--dourado); color: var(--dourado);
+      font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 40px;
+      margin-bottom: 20px;
+    }
+    .divisor { width: 48px; height: 3px; background: var(--dourado); margin: 0 auto 32px; }
+
+    /* ─── BARRA TOPO (urgência) ─── */
+    .topbar {
+      background: var(--dourado); color: var(--preto);
+      text-align: center; padding: 10px 24px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+    }
+    .topbar span { font-weight: 400; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, #111111 0%, #1a1a1a 60%, #0f0f0f 100%);
+      padding: 80px 0 72px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero__inner { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+    .hero__kicker { color: var(--dourado); font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800; line-height: 1.18;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--dourado); }
+    .hero__sub {
+      font-size: 18px; color: rgba(255,255,255,0.72); max-width: 600px; line-height: 1.7;
+    }
+    .hero__cta-group { display: flex; flex-direction: column; gap: 12px; }
+    .btn-wpp {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--verde-w); color: #fff;
+      font-size: 17px; font-weight: 700; padding: 18px 36px;
+      border-radius: 8px; cursor: pointer; border: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.28);
+    }
+    .btn-wpp:hover { background: var(--verde-w2); transform: translateY(-1px); }
+    .btn-wpp svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .hero__micro { font-size: 13px; color: var(--cinza-m); }
+    .hero__micro strong { color: rgba(255,255,255,0.55); font-weight: 600; }
+    .hero__badge {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 20px; border-radius: 8px; font-size: 14px; color: rgba(255,255,255,0.65);
+      margin-top: 8px;
+    }
+    .hero__badge::before { content: "📍"; font-size: 18px; }
+
+    /* ─── DOR ─── */
+    .dor { background: #111; padding: 72px 0; }
+    .dor__titulo { text-align: center; margin-bottom: 48px; }
+    .dor__titulo h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; line-height: 1.25; }
+    .dor__titulo h2 em { font-style: normal; color: var(--dourado); }
+    .dor__grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    .dor__card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--dourado);
+      padding: 24px 28px; border-radius: 8px;
+    }
+    .dor__card p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.65; }
+    .dor__card p strong { color: #fff; font-weight: 700; }
+    .dor__bridge {
+      margin-top: 48px; text-align: center;
+      font-size: 18px; color: rgba(255,255,255,0.80); max-width: 620px; margin-inline: auto;
+    }
+    .dor__bridge strong { color: var(--dourado); }
+
+    /* ─── SOLUÇÃO / OFERTA ─── */
+    .solucao { background: #0f0f0f; padding: 80px 0; }
+    .solucao__topo { text-align: center; margin-bottom: 56px; }
+    .solucao__topo h2 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; line-height: 1.2; }
+    .solucao__topo h2 em { font-style: normal; color: var(--dourado); }
+    .solucao__topo p { color: rgba(255,255,255,0.65); margin-top: 16px; font-size: 17px; max-width: 580px; margin-inline: auto; }
+    .solucao__box {
+      background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 12px; padding: 40px 40px 36px; max-width: 680px; margin: 0 auto;
+    }
+    .solucao__box h3 {
+      font-size: 20px; font-weight: 800; color: var(--dourado); margin-bottom: 24px;
+      padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .entrega-lista { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .entrega-lista li {
+      display: flex; align-items: flex-start; gap: 14px;
+      color: rgba(255,255,255,0.85); font-size: 16px;
+    }
+    .entrega-lista li .ico {
+      width: 24px; height: 24px; background: rgba(201,168,76,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px; font-size: 12px; color: var(--dourado); font-weight: 900;
+    }
+    .solucao__preco {
+      margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .solucao__preco-txt { font-size: 14px; color: var(--cinza-m); }
+    .solucao__preco-valor { font-size: 32px; font-weight: 900; color: #fff; }
+    .solucao__preco-valor span { font-size: 16px; color: var(--cinza-m); font-weight: 400; }
+    .solucao__alerta {
+      margin-top: 28px; background: rgba(201,168,76,0.08);
+      border: 1px dashed rgba(201,168,76,0.3); border-radius: 8px;
+      padding: 16px 20px; text-align: center; font-size: 14px; color: rgba(255,255,255,0.65);
+    }
+    .solucao__alerta strong { color: var(--dourado); }
+
+    /* ─── PROCESSO ─── */
+    .processo { background: #111; padding: 80px 0; }
+    .processo__topo { text-align: center; margin-bottom: 56px; }
+    .processo__topo h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; }
+    .processo__steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 24px; position: relative;
+      padding-bottom: 40px;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step__num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--dourado); color: var(--preto);
+      font-size: 16px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .step__line {
+      position: absolute; left: 22px; top: 44px; bottom: 0;
+      width: 1px; background: rgba(201,168,76,0.2);
+    }
+    .step:last-child .step__line { display: none; }
+    .step__body { padding-top: 8px; }
+    .step__body h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .step__body p { color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.6; }
+
+    /* ─── PARA QUEM É ─── */
+    .quem { background: #0f0f0f; padding: 80px 0; }
+    .quem__topo { text-align: center; margin-bottom: 48px; }
+    .quem__topo h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; line-height: 1.25; }
+    .quem__grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    .quem__card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+      padding: 32px 28px;
+    }
+    .quem__card h3 { font-size: 19px; font-weight: 800; margin-bottom: 16px; }
+    .quem__card h3 span { color: var(--dourado); }
+    .quem__check { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .quem__check li { display: flex; gap: 10px; font-size: 15px; color: rgba(255,255,255,0.75); }
+    .quem__check li::before { content: "✓"; color: var(--verde-w); font-weight: 900; flex-shrink: 0; }
+
+    /* ─── DIFERENCIAIS ─── */
+    .diferenciais { background: #111; padding: 80px 0; }
+    .diferenciais__topo { text-align: center; margin-bottom: 48px; }
+    .diferenciais__topo h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; line-height: 1.25; }
+    .diferenciais__topo h2 em { font-style: normal; color: var(--dourado); }
+    .diferenciais__grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    .dif-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: 10px;
+    }
+    .dif-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .dif-item h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .dif-item p { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.55; }
+
+    /* ─── PROVA SOCIAL (placeholder) ─── */
+    .prova { background: #0f0f0f; padding: 80px 0; }
+    .prova__topo { text-align: center; margin-bottom: 48px; }
+    .prova__topo h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; }
+    .prova__grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    .prova__card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 28px;
+    }
+    .prova__stars { color: var(--dourado); font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
+    .prova__card blockquote { font-size: 16px; color: rgba(255,255,255,0.78); font-style: italic; line-height: 1.65; margin-bottom: 18px; }
+    .prova__autor { font-size: 13px; color: var(--cinza-m); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .prova__nota {
+      text-align: center; margin-top: 32px; font-size: 13px; color: rgba(255,255,255,0.3);
+      font-style: italic;
+    }
+
+    /* ─── FAQ ─── */
+    .faq { background: #111; padding: 80px 0; }
+    .faq__topo { text-align: center; margin-bottom: 48px; }
+    .faq__topo h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; }
+    .faq__lista { display: flex; flex-direction: column; gap: 16px; max-width: 680px; margin: 0 auto; }
+    .faq__item {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; overflow: hidden;
+    }
+    .faq__q {
+      padding: 20px 24px; font-size: 16px; font-weight: 700; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      user-select: none;
+    }
+    .faq__q .arrow { font-size: 14px; color: var(--dourado); transition: transform 0.25s; flex-shrink: 0; }
+    .faq__a { padding: 0 24px 20px; color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.65; display: none; }
+    .faq__item.open .faq__a { display: block; }
+    .faq__item.open .arrow { transform: rotate(180deg); }
+
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      background: linear-gradient(135deg, #141414 0%, #1c1a12 100%);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 80px 0;
+    }
+    .cta-final__inner { text-align: center; max-width: 620px; margin: 0 auto; }
+    .cta-final h2 { font-size: clamp(24px, 4.5vw, 40px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .cta-final h2 em { font-style: normal; color: var(--dourado); }
+    .cta-final p { color: rgba(255,255,255,0.65); font-size: 17px; margin-bottom: 36px; line-height: 1.7; }
+    .cta-final .btn-wpp { font-size: 18px; padding: 20px 44px; margin: 0 auto; }
+    .cta-final__micro { margin-top: 18px; font-size: 13px; color: var(--cinza-m); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0A0A0A; border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 24px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.3);
+    }
+    footer a { color: rgba(255,255,255,0.4); }
+    footer a:hover { color: var(--dourado); }
+
+    /* ─── BOTÃO FLUTUANTE ─── */
+    .fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      background: var(--verde-w); color: #fff; border-radius: 50px;
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 22px; font-size: 15px; font-weight: 700;
+      box-shadow: 0 6px 28px rgba(37,211,102,0.38);
+      transition: transform 0.15s, background 0.2s;
+      cursor: pointer;
+    }
+    .fab:hover { background: var(--verde-w2); transform: translateY(-2px); }
+    .fab svg { width: 20px; height: 20px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (min-width: 640px) {
+      .dor__grid { grid-template-columns: 1fr 1fr; }
+      .quem__grid { grid-template-columns: 1fr 1fr; }
+      .diferenciais__grid { grid-template-columns: 1fr 1fr; }
+      .prova__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 860px) {
+      .prova__grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     BARRA DE URGÊNCIA
+════════════════════════════════════════════ -->
+<div class="topbar">
+  ⚡ Vagas limitadas para Junho — <span>agenda de produção quase cheia</span>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero" id="topo">
+  <div class="container">
+    <div class="hero__inner">
+      <span class="hero__kicker">Videomaker Estratégico · Rio de Janeiro</span>
+
+      <h1>
+        Sua clínica odontológica ou escritório<br>
+        com a <em>imagem premium</em> que<br>
+        ela merece — em 1 dia de produção.
+      </h1>
+
+      <p class="hero__sub">
+        Produzo vídeos estratégicos para dentistas e advogados no Rio de Janeiro.
+        Conteúdo que posiciona, gera autoridade e atrai pacientes e clientes de maior valor.
+      </p>
+
+      <div class="hero__cta-group">
+        <a
+          class="btn-wpp"
+          id="cta-hero"
+          href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%21+Vi+sua+p%C3%A1gina+e+quero+saber+mais+sobre+a+produ%C3%A7%C3%A3o+de+v%C3%ADdeos."
+          target="_blank"
+          rel="noopener"
+          onclick="trackCTA('hero')"
+        >
+          <!-- WhatsApp SVG -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.571a.75.75 0 0 0 .921.921l5.717-1.475A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.896 0-3.668-.524-5.178-1.437l-.369-.22-3.394.875.892-3.262-.242-.384A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Quero saber como funciona
+        </a>
+        <p class="hero__micro">
+          <strong>Sem compromisso</strong> — respondo em até 5 minutos no horário comercial
+        </p>
+      </div>
+
+      <div class="hero__badge">
+        Atendimento na Barra da Tijuca, Recreio, Campo Grande e Zona Sul
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SEÇÃO DE DOR
+════════════════════════════════════════════ -->
+<section class="dor">
+  <div class="container">
+    <div class="dor__titulo">
+      <span class="tag">Você se identifica?</span>
+      <h2>
+        Sua clínica ou escritório é <em>premium</em>,<br>
+        mas o Instagram não passa essa imagem.
+      </h2>
+    </div>
+
+    <div class="dor__grid">
+      <div class="dor__card">
+        <p>
+          <strong>"Invisto em estrutura, em equipamento, em qualificação —</strong>
+          mas no Instagram parece que sou igual a qualquer outro dentista da cidade."
+        </p>
+      </div>
+      <div class="dor__card">
+        <p>
+          <strong>"Perco pacientes para concorrentes menores</strong>
+          porque eles aparecem mais e parecem mais profissionais nas redes sociais."
+        </p>
+      </div>
+      <div class="dor__card">
+        <p>
+          <strong>"Já tentei fazer vídeos com o celular,</strong>
+          mas a qualidade não transmite o nível do meu atendimento. Fica amador."
+        </p>
+      </div>
+      <div class="dor__card">
+        <p>
+          <strong>"Não tenho tempo nem equipe</strong>
+          para ficar pensando em conteúdo, roteiro e edição toda semana."
+        </p>
+      </div>
+    </div>
+
+    <p class="dor__bridge" style="margin-top: 48px;">
+      O problema não é a sua clínica ou escritório — é que a presença digital ainda
+      <strong>não comunica o valor real do que você entrega</strong>.
+      Isso tem solução.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SOLUÇÃO / OFERTA
+════════════════════════════════════════════ -->
+<section class="solucao" id="oferta">
+  <div class="container">
+    <div class="solucao__topo">
+      <span class="tag">A Solução</span>
+      <h2>
+        O <em>Dia de Filmagem Estratégico</em>:<br>
+        transformação completa em 1 dia.
+      </h2>
+      <p>
+        Em uma única sessão de produção, você sai com conteúdo premium para
+        os próximos 2 meses — sem precisar se preocupar com nada.
+      </p>
+    </div>
+
+    <div class="solucao__box">
+      <h3>📦 O que está incluído no seu dia de produção:</h3>
+
+      <ul class="entrega-lista">
+        <li>
+          <span class="ico">✓</span>
+          <span><strong>1 Vídeo Institucional</strong> (60–90 seg) — apresenta você, sua especialidade e diferenciais de forma cinematográfica</span>
+        </li>
+        <li>
+          <span class="ico">✓</span>
+          <span><strong>6 a 8 Reels Estratégicos</strong> (15–30 seg cada) — formatos prontos para publicar no Instagram, semana a semana</span>
+        </li>
+        <li>
+          <span class="ico">✓</span>
+          <span><strong>1 Vídeo para Anúncio</strong> — criativo no formato horizontal e vertical, pronto para rodar no Meta Ads e atrair novos pacientes</span>
+        </li>
+        <li>
+          <span class="ico">✓</span>
+          <span><strong>Roteiro e Direção Criativa</strong> — eu cuido de tudo: o que falar, como aparecer, qual mensagem gerar mais conexão com seu público</span>
+        </li>
+        <li>
+          <span class="ico">✓</span>
+          <span><strong>Edição completa</strong> com identidade visual, trilha, legendas e correção de cor profissional</span>
+        </li>
+      </ul>
+
+      <div class="solucao__preco">
+        <div>
+          <p class="solucao__preco-txt">Investimento único</p>
+          <p class="solucao__preco-valor">R$ 1.800 <span>– R$ 2.500</span></p>
+        </div>
+        <a
+          class="btn-wpp"
+          href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%21+Tenho+interesse+no+Dia+de+Filmagem+Estrat%C3%A9gico.+Pode+me+contar+mais%3F"
+          target="_blank"
+          rel="noopener"
+          onclick="trackCTA('oferta')"
+          id="cta-oferta"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.571a.75.75 0 0 0 .921.921l5.717-1.475A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.896 0-3.668-.524-5.178-1.437l-.369-.22-3.394.875.892-3.262-.242-.384A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Quero agendar meu dia de filmagem
+        </a>
+      </div>
+
+      <div class="solucao__alerta">
+        <strong>⚠ Agenda limitada:</strong> aceito no máximo 3 produções por mês para garantir qualidade e atenção total a cada cliente.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PROCESSO — COMO FUNCIONA
+════════════════════════════════════════════ -->
+<section class="processo" id="como-funciona">
+  <div class="container">
+    <div class="processo__topo">
+      <span class="tag">Como Funciona</span>
+      <h2>Do contato à entrega: simples e sem complicação</h2>
+      <div class="divisor"></div>
+    </div>
+
+    <div class="processo__steps" style="max-width:600px; margin: 0 auto;">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div class="step__line"></div>
+        <div class="step__body">
+          <h3>Você manda uma mensagem</h3>
+          <p>Me conta rapidamente o que você faz, onde fica e qual é o seu maior desafio de comunicação hoje. Eu respondo em até 5 minutos no horário comercial.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div class="step__line"></div>
+        <div class="step__body">
+          <h3>Briefing e planejamento criativo</h3>
+          <p>Faço as perguntas certas para entender seu posicionamento, público e objetivos. Depois entrego o roteiro e o plano de conteúdo antes do dia de filmagem — você aprova tudo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div class="step__line"></div>
+        <div class="step__body">
+          <h3>Dia de filmagem na sua clínica ou escritório</h3>
+          <p>Chego com equipamento profissional. Dirijo cada cena para que você apareça com confiança e naturalidade. Em um único dia de produção, gravamos todo o conteúdo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <div class="step__line"></div>
+        <div class="step__body">
+          <h3>Edição, entrega e suporte</h3>
+          <p>Edito tudo com identidade visual e trilha profissional. Entrego os arquivos em até 7 dias úteis com orientação sobre quando e como publicar cada conteúdo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">5</div>
+        <div class="step__line"></div>
+        <div class="step__body">
+          <h3>Resultado: presença que vende</h3>
+          <p>Você publica conteúdos que transmitem o real nível do seu serviço, geram autoridade no Instagram e atraem pacientes e clientes que já chegam prontos para fechar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PARA QUEM É
+════════════════════════════════════════════ -->
+<section class="quem">
+  <div class="container">
+    <div class="quem__topo">
+      <span class="tag">Para Quem É</span>
+      <h2>Trabalho exclusivamente com profissionais premium</h2>
+    </div>
+
+    <div class="quem__grid">
+      <div class="quem__card">
+        <h3>🦷 <span>Dentistas & Clínicas</span></h3>
+        <ul class="quem__check">
+          <li>Especialistas em implantes, ortodontia ou harmonização</li>
+          <li>Clínica própria ou sócia com estrutura premium</li>
+          <li>Instagram ativo, mas com conteúdo abaixo do nível do serviço</li>
+          <li>Quer atrair pacientes de maior poder aquisitivo</li>
+          <li>Barra da Tijuca, Recreio, Campo Grande ou Zona Sul</li>
+        </ul>
+      </div>
+      <div class="quem__card">
+        <h3>⚖️ <span>Advogados & Escritórios</span></h3>
+        <ul class="quem__check">
+          <li>Advocacia empresarial, trabalhista, criminal ou de família</li>
+          <li>Escritório estruturado, equipe formada</li>
+          <li>Vive de indicação e quer crescer com presença digital</li>
+          <li>Quer ser percebido como referência na sua área</li>
+          <li>Barra, Botafogo, Flamengo, Centro ou Zona Sul</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     DIFERENCIAIS
+════════════════════════════════════════════ -->
+<section class="diferenciais">
+  <div class="container">
+    <div class="diferenciais__topo">
+      <span class="tag">Por que eu?</span>
+      <h2>Não sou só um videomaker.<br><em>Sou um parceiro de posicionamento.</em></h2>
+      <div class="divisor" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="diferenciais__grid">
+      <div class="dif-item">
+        <span class="dif-icon">🎯</span>
+        <div>
+          <h3>Especializado no seu mercado</h3>
+          <p>Entendo as dores, a linguagem e os gatilhos de compra de dentistas e advogados. Não faço vídeos genéricos — faço conteúdo estratégico para o seu público específico.</p>
+        </div>
+      </div>
+      <div class="dif-item">
+        <span class="dif-icon">🎬</span>
+        <div>
+          <h3>Direção criativa incluída</h3>
+          <p>Você não precisa saber o que falar ou como se posicionar na câmera. Eu cuido do roteiro, da direção e do storytelling. Você só aparece.</p>
+        </div>
+      </div>
+      <div class="dif-item">
+        <span class="dif-icon">📱</span>
+        <div>
+          <h3>Conteúdo pronto para vender</h3>
+          <p>Cada vídeo é pensado para gerar autoridade, confiança e conversão no Instagram — não apenas para "ficar bonito". Estética + estratégia juntas.</p>
+        </div>
+      </div>
+      <div class="dif-item">
+        <span class="dif-icon">⚡</span>
+        <div>
+          <h3>Resultado em 1 dia</h3>
+          <p>Em uma única sessão você sai com conteúdo para 2 meses. Sem processo longo, sem reuniões intermináveis, sem burocracia.</p>
+        </div>
+      </div>
+      <div class="dif-item">
+        <span class="dif-icon">🔒</span>
+        <div>
+          <h3>Discrição e profissionalismo</h3>
+          <p>Respeito o ambiente da sua clínica ou escritório. Trabalho de forma rápida, organizada e sem interferir no seu atendimento do dia.</p>
+        </div>
+      </div>
+      <div class="dif-item">
+        <span class="dif-icon">📍</span>
+        <div>
+          <h3>Local e de confiança</h3>
+          <p>Sou do Rio de Janeiro. Conheço os bairros, o perfil dos profissionais e o público que você quer atingir. Não é um serviço genérico de outra cidade.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PROVA SOCIAL (placeholders para depoimentos)
+════════════════════════════════════════════ -->
+<section class="prova" id="depoimentos">
+  <div class="container">
+    <div class="prova__topo">
+      <span class="tag">Resultados</span>
+      <h2>O que dizem os clientes</h2>
+      <div class="divisor"></div>
+    </div>
+
+    <div class="prova__grid">
+      <div class="prova__card">
+        <div class="prova__stars">★★★★★</div>
+        <blockquote>
+          "Depois do dia de filmagem, meu Instagram ficou completamente diferente.
+          Em menos de 3 semanas já recebi 4 consultas de pacientes que
+          me encontraram pelo Instagram — todos de implante."
+        </blockquote>
+        <p class="prova__autor">Dra. [Nome] · Ortodontia · Barra da Tijuca</p>
+      </div>
+
+      <div class="prova__card">
+        <div class="prova__stars">★★★★★</div>
+        <blockquote>
+          "Sempre fui resistente a aparecer nas redes. O Lucas me colocou à vontade,
+          cuidou de tudo e o resultado ficou exatamente com a seriedade
+          que o escritório precisa transmitir."
+        </blockquote>
+        <p class="prova__autor">Dr. [Nome] · Advocacia Empresarial · Botafogo</p>
+      </div>
+
+      <div class="prova__card">
+        <div class="prova__stars">★★★★★</div>
+        <blockquote>
+          "Minha clínica sempre foi muito boa, mas o Instagram não passava isso.
+          Agora as pessoas chegam sabendo que somos premium — e pagam por isso."
+        </blockquote>
+        <p class="prova__autor">Dr. [Nome] · Implantodontia · Recreio</p>
+      </div>
+    </div>
+
+    <p class="prova__nota">
+      * Substituir pelos depoimentos reais dos primeiros clientes atendidos
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq__topo">
+      <span class="tag">Dúvidas Frequentes</span>
+      <h2>Perguntas & Respostas</h2>
+      <div class="divisor"></div>
+    </div>
+
+    <div class="faq__lista">
+      <div class="faq__item">
+        <div class="faq__q">
+          Eu preciso ter experiência com câmera ou saber o que falar?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq__a">
+          Não. Isso é exatamente o meu trabalho. Antes do dia de filmagem, entrego o roteiro completo e explico cada cena. No dia, dirijo cada take para que você apareça com naturalidade e confiança. A maioria dos meus clientes nunca tinha gravado um vídeo profissional antes.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">
+          Quanto tempo dura o dia de filmagem?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq__a">
+          Em geral de 3 a 5 horas, dependendo do ambiente e da quantidade de cenas. Organizo tudo para que a filmagem seja eficiente e não atrapalhe o seu dia de atendimento.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">
+          Em quanto tempo recebo os vídeos editados?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq__a">
+          Entrego todos os arquivos editados e finalizados em até 7 dias úteis após o dia de filmagem. Você recebe tudo em alta resolução, pronto para publicar.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">
+          Você atende apenas dentistas ou também advogados?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq__a">
+          Atendo dentistas, clínicas odontológicas e escritórios de advocacia. São os dois segmentos em que sou especializado, pois conheço profundamente o perfil do público, a linguagem e os gatilhos de compra de cada um.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">
+          E se eu quiser um plano mensal de conteúdo depois?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq__a">
+          Sim, ofereço planos de recorrência mensal a partir de R$2.500/mês, com dias de filmagem regulares, mais Reels, vídeos para anúncio e direção criativa contínua. Muitos clientes começam com o dia de filmagem e migram para o plano mensal após ver os resultados.
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q">
+          Quais bairros do Rio você atende?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq__a">
+          Atendo principalmente Barra da Tijuca, Recreio dos Bandeirantes, Campo Grande, Zona Sul (Botafogo, Flamengo, Leblon, Ipanema, Copacabana) e Centro. Para outras regiões, entre em contato para verificar disponibilidade.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════ -->
+<section class="cta-final" id="contato">
+  <div class="container">
+    <div class="cta-final__inner">
+      <span class="tag">Próximo Passo</span>
+      <h2>
+        Sua presença digital no nível<br>
+        que o seu serviço <em>já merece hoje</em>.
+      </h2>
+      <p>
+        Mande uma mensagem agora. Sem compromisso, sem formulário complicado.
+        Em 5 minutos a gente já consegue entender se faz sentido trabalharmos juntos
+        e como posso transformar a imagem digital do seu negócio.
+      </p>
+      <a
+        class="btn-wpp"
+        href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%21+Quero+elevar+a+presen%C3%A7a+digital+da+minha+cl%C3%ADnica%2Fescrit%C3%B3rio.+Pode+me+contar+mais%3F"
+        target="_blank"
+        rel="noopener"
+        onclick="trackCTA('cta-final')"
+        id="cta-final"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.571a.75.75 0 0 0 .921.921l5.717-1.475A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.896 0-3.668-.524-5.178-1.437l-.369-.22-3.394.875.892-3.262-.242-.384A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        Falar agora no WhatsApp →
+      </a>
+      <p class="cta-final__micro">Respondo em até 5 minutos · Atendimento de seg a sex, das 9h às 18h</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <p>© 2026 <strong>Lucas Franco — Videomaker Estratégico</strong> · Rio de Janeiro</p>
+  <p style="margin-top:6px;">
+    <a href="mailto:lucasfranco2077@gmail.com">lucasfranco2077@gmail.com</a>
+  </p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     BOTÃO FLUTUANTE WHATSAPP
+════════════════════════════════════════════ -->
+<a
+  class="fab"
+  href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1%21+Tenho+interesse+em+produ%C3%A7%C3%A3o+de+v%C3%ADdeos."
+  target="_blank"
+  rel="noopener"
+  id="cta-fab"
+  onclick="trackCTA('fab')"
+  aria-label="Falar no WhatsApp"
+>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.571a.75.75 0 0 0 .921.921l5.717-1.475A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.896 0-3.668-.524-5.178-1.437l-.369-.22-3.394.875.892-3.262-.242-.384A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+  WhatsApp
+</a>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT — FAQ + RASTREAMENTO DE EVENTOS
+     ============================================================
+     GUIA DE EVENTOS DO PIXEL:
+     ─────────────────────────
+     PageView       → disparado automaticamente no <head>
+     ViewContent    → usuário rolou até a seção de Oferta (50% da tela)
+     Contact        → qualquer clique num botão de WhatsApp
+     InitiateCheckout → clique específico no CTA da oferta
+     Lead           → (disparar via API de Conversão quando o lead
+                       responder no WhatsApp — fora desta página)
+     ============================================================ -->
+<script>
+  // ── FAQ accordion ──────────────────────────────────────────────
+  document.querySelectorAll('.faq__item').forEach(item => {
+    item.querySelector('.faq__q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // ── Pixel: ViewContent quando a seção de oferta entra na tela ──
+  (function () {
+    var ofertaSection = document.getElementById('oferta');
+    if (!ofertaSection || typeof fbq === 'undefined') return;
+    var fired = false;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !fired) {
+          fired = true;
+          fbq('track', 'ViewContent', {
+            content_name: 'Dia de Filmagem Estrategico',
+            content_category: 'Videomaker',
+            value: 2000,
+            currency: 'BRL'
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(ofertaSection);
+  })();
+
+  // ── Rastreamento dos CTAs ────────────────────────────────────────
+  function trackCTA(location) {
+    if (typeof fbq === 'undefined') return;
+
+    // EVENTO: Contact — qualquer botão de WhatsApp
+    fbq('track', 'Contact', {
+      content_name: 'CTA WhatsApp',
+      content_category: location
+    });
+
+    // EVENTO: InitiateCheckout — apenas o botão da seção de oferta
+    if (location === 'oferta') {
+      fbq('track', 'InitiateCheckout', {
+        content_name: 'Dia de Filmagem Estrategico',
+        value: 2000,
+        currency: 'BRL',
+        num_items: 1
+      });
+    }
+  }
+
+  // ── Pixel: ScrollDepth 75% → dispara ViewContent adicional ──────
+  (function () {
+    var fired = false;
+    window.addEventListener('scroll', function () {
+      if (fired) return;
+      var scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (scrolled >= 0.75) {
+        fired = true;
+        if (typeof fbq !== 'undefined') {
+          fbq('trackCustom', 'ScrollDepth75', { page: 'landing_page' });
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
